@@ -38,6 +38,10 @@ public class RewiteLoan {
 
 	/** Set a new annualInterestRate */
 	public void setAnnualInterestRate(double annualInterestRate) {
+		if (annualInterestRate <= 0) {
+			throw new IllegalArgumentException("Annual interest rate must be positive.");
+		}
+		
 		this.annualInterestRate = annualInterestRate;
 	}
 
@@ -48,6 +52,10 @@ public class RewiteLoan {
 
 	/** Set a new numberOfYears */
 	public void setNumberOfYears(int numberOfYears) {
+		if (numOfYears <= 0) {
+			throw new IllegalArgumentException("Number of years must be positive.");
+		}
+		
 		this.numberOfYears = numberOfYears;
 	}
 
@@ -58,6 +66,10 @@ public class RewiteLoan {
 
 	/** Set a newloanAmount */
 	public void setLoanAmount(double loanAmount) {
+		if (loanAmount <= 0) {
+			throw new IllegalArgumentException("Loan amount must be positive.");
+		}
+		
 		this.loanAmount = loanAmount;
 	}
 
