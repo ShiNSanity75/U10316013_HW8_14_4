@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class RewiteLoan {
@@ -8,16 +9,26 @@ public class RewiteLoan {
 		Scanner input = new Scanner(System.in);
 
 		// Enter yearly interest rate
-		System.out.print("Enter yearly interest rate, for example, 8.25: ");
+		System.out.print("\nEnter yearly interest rate(EX : 8.25): ");
 		double annualInterestRate = input.nextDouble();
 
 		// Enter number of years
-		System.out.print("Enter number of years as an integer: ");
+		System.out.print("\nEnter number of years as an integer: ");
 		int numberOfYears = input.nextInt();
 
 		// Enter loan amount
-		System.out.print("Enter loan amount, for example, 120000.95: ");
+		System.out.print("\nEnter loan amount(EX : 120000.95): ");
+		double loanAmount =  input.nextDouble();
 		
+		try {
+			// Create Loan object
+			new RewiteLoan(annualInterestRate, numberOfYears, loanAmount);
+			
+		}catch (Exception ex) {
+			System.out.println(ex);
+		}
+		
+		System.out.println("\nThank you for using the program.");
 	}
 	
 	private double annualInterestRate;
