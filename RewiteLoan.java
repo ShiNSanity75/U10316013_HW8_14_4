@@ -21,51 +21,63 @@ public class RewiteLoan {
   }
 
   /** Return annualInterestRate */
-  public double getAnnualInterestRate() {
-    return annualInterestRate;
-  }
+	public double getAnnualInterestRate() {
+		return annualInterestRate;
+	}
 
-  /** Set a new annualInterestRate */
-  public void setAnnualInterestRate(double annualInterestRate) {
-    this.annualInterestRate = annualInterestRate;
-  }
+	/** Set a new annualInterestRate */
+	public void setAnnualInterestRate(double annualInterestRate) {
+		if (annualInterestRate <= 0) {
+			throw new IllegalArgumentException("Annual interest rate must be positive.");
+		}
+		
+		this.annualInterestRate = annualInterestRate;
+	}
 
-  /** Return numberOfYears */
-  public int getNumberOfYears() {
-    return numberOfYears;
-  }
+	/** Return numberOfYears */
+	public int getNumberOfYears() {
+		return numberOfYears;
+	}
 
-  /** Set a new numberOfYears */
-  public void setNumberOfYears(int numberOfYears) {
-    this.numberOfYears = numberOfYears;
-  }
+	/** Set a new numberOfYears */
+	public void setNumberOfYears(int numberOfYears) {
+		if (numberOfYears <= 0) {
+			throw new IllegalArgumentException("Number of years must be positive.");
+		}
+		
+		this.numberOfYears = numberOfYears;
+	}
 
-  /** Return loanAmount */
-  public double getLoanAmount() {
-    return loanAmount;
-  }
+	/** Return loanAmount */
+	public double getLoanAmount() {
+		return loanAmount;
+	}
 
-  /** Set a newloanAmount */
-  public void setLoanAmount(double loanAmount) {
-    this.loanAmount = loanAmount;
-  }
+	/** Set a newloanAmount */
+	public void setLoanAmount(double loanAmount) {
+		if (loanAmount <= 0) {
+			throw new IllegalArgumentException("Loan amount must be positive.");
+		}
+		
+		this.loanAmount = loanAmount;
+	}
 
-  /** Find monthly payment */
-  public double getMonthlyPayment() {
-    double monthlyInterestRate = annualInterestRate / 1200;
-    double monthlyPayment = loanAmount * monthlyInterestRate / (1 -
-      (Math.pow(1 / (1 + monthlyInterestRate), numberOfYears * 12)));
-    return monthlyPayment;    
-  }
+	/** Find monthly payment */
+	public double getMonthlyPayment() {
+		double monthlyInterestRate = annualInterestRate / 1200;
+		double monthlyPayment = loanAmount * monthlyInterestRate / (1 -
+			(Math.pow(1 / (1 + monthlyInterestRate), numberOfYears * 12)));
+		return monthlyPayment;    
+	}
 
-  /** Find total payment */
-  public double getTotalPayment() {
-    double totalPayment = getMonthlyPayment() * numberOfYears * 12;
-    return totalPayment;    
-  }
+	/** Find total payment */
+	public double getTotalPayment() {
+		double totalPayment = getMonthlyPayment() * numberOfYears * 12;
+		return totalPayment;    
+	}
 
-  /** Return loan date */
-  public java.util.Date getLoanDate() {
-    return loanDate;
-  }
+	/** Return loan date */
+	public java.util.Date getLoanDate() {
+		return loanDate;
+	}
 }
