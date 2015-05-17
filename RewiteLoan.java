@@ -1,26 +1,37 @@
 public class RewiteLoan {
-  private double annualInterestRate;
-  private int numberOfYears;
-  private double loanAmount;
-  private java.util.Date loanDate;
+	private double annualInterestRate;
+	private int numberOfYears;
+	private double loanAmount;
+	private java.util.Date loanDate;
 
-  /** Default constructor */
-  public RewiteLoan() {
-    this(2.5, 1, 1000);
-  }
+	/** Default constructor */
+	public RewiteLoan() {
+		this(2.5, 1, 1000);
+	}
 
-  /** Construct a loan with specified annual interest rate,
-      number of years and loan amount 
-    */
-  public RewiteLoan(double annualInterestRate, int numberOfYears,
-      double loanAmount) {
-    this.annualInterestRate = annualInterestRate;
-    this.numberOfYears = numberOfYears;
-    this.loanAmount = loanAmount;
-    loanDate = new java.util.Date();
-  }
+	/** Construct a loan with specified annual interest rate,
+		number of years and loan amount 
+	*/
+	public RewiteLoan(double annualInterestRate, int numberOfYears,	double loanAmount) {
+		if (annualInterestRate <= 0) {
+			throw new IllegalArgumentException("Annual interest rate must be positive.");
+		}
+		
+		if (numberOfYears <= 0) {
+			throw new IllegalArgumentException("Number of years must be positive.");
+		}
+		
+		if (loanAmount <= 0) {
+			throw new IllegalArgumentException("Loan amount must be positive.");
+		}
+		
+		setAnnualInterestRate(annualInterestRate);
+		setNumberOfYears(numberOfYears);
+		setLoanAmount(loanAmount);
+		loanDate = new java.util.Date();
+	}
 
-  /** Return annualInterestRate */
+	/** Return annualInterestRate */
 	public double getAnnualInterestRate() {
 		return annualInterestRate;
 	}
